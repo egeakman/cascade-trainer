@@ -63,7 +63,7 @@ parser.add_argument(
     required=True,
 )
 parser.add_argument(
-    "-npt",
+    "-npv",
     "--numPosVec",
     help="Number of positives for creating vector file",
     type=int,
