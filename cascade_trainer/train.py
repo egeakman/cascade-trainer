@@ -1,5 +1,6 @@
 import os
 import cv2
+import shutil
 import subprocess
 from argparse import ArgumentParser
 
@@ -7,8 +8,8 @@ from argparse import ArgumentParser
 neg_list = "neg.lst"
 pos_list = "pos.lst"
 vec_file = "samples.vec"
-createsamples_path = "data/opencv_createsamples.exe"
-traincascade_path = "data/opencv_traincascade.exe"
+createsamples_path = f"{os.path.dirname(__file__)}/data/opencv_createsamples.exe"
+traincascade_path = f"{os.path.dirname(__file__)}/data/opencv_traincascade.exe"
 
 parser = ArgumentParser()
 parser.add_argument("-neg", "--negative", help="Negative folder", required=True)
@@ -116,7 +117,7 @@ def create_vec():
 
 def train_cascade():
     if os.path.isdir(args.output):
-        os.rmdir(args.output)
+        shutil.rmtree(args.output)
     os.mkdir(args.output)
 
     if args.accaptanceRatioBreakValue == -1.0:
