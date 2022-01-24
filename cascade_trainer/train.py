@@ -12,8 +12,8 @@ createsamples_path = f"{os.path.dirname(__file__)}/data/opencv_createsamples.exe
 traincascade_path = f"{os.path.dirname(__file__)}/data/opencv_traincascade.exe"
 
 parser = ArgumentParser()
-parser.add_argument("-neg", "--negative", help="Negative folder", required=True)
-parser.add_argument("-pos", "--positive", help="Positive folder", required=True)
+parser.add_argument("-neg", "--negative", help="Negatives path", required=True)
+parser.add_argument("-pos", "--positive", help="Positives path", required=True)
 parser.add_argument(
     "-w", "--width", help="Sample width", type=int, required=False, default=25
 )
@@ -56,7 +56,18 @@ parser.add_argument(
     default="BASIC",
 )
 parser.add_argument(
-    "-np", "--numPos", help="Number of positives", type=int, required=True
+    "-npt",
+    "--numPosTrain",
+    help="Number of positives for training. This should be less than numPosVec",
+    type=int,
+    required=True,
+)
+parser.add_argument(
+    "-npt",
+    "--numPosVec",
+    help="Number of positives for creating vector file",
+    type=int,
+    required=True,
 )
 parser.add_argument(
     "-nn", "--numNeg", help="Number of negatives", type=int, required=True
@@ -110,7 +121,7 @@ def create_lists():
 
 
 def create_vec():
-    command = f"{createsamples_path} -info {pos_list} -vec {vec_file} -w {args.width} -h {args.height} -num {args.numPos}"
+    command = f"{createsamples_path} -info {pos_list} -vec {vec_file} -w {args.width} -h {args.height} -num {args.numPosVec}"
     print(command)
     subprocess.call(command.split(" "), shell=False)
 
@@ -125,6 +136,6 @@ def train_cascade():
     else:
         arbv = args.accaptanceRatioBreakValue
 
-    command = f"{traincascade_path} -data {args.output} -vec {vec_file} -bg {neg_list} -numPos {args.numPos} -numNeg {args.numNeg} -numStages {args.stages} -w {args.width} -h {args.height} -precalcIdxBufSize {args.idxSize} -precalcValBufSize {args.valSize} -numThreads {args.numThreads} -acceptanceRatioBreakValue {arbv} -mode {args.mode}"
+    command = f"{traincascade_path} -data {args.output} -vec {vec_file} -bg {neg_list} -numPos {args.numPosTrain} -numNeg {args.numNeg} -numStages {args.stages} -w {args.width} -h {args.height} -precalcIdxBufSize {args.idxSize} -precalcValBufSize {args.valSize} -numThreads {args.numThreads} -acceptanceRatioBreakValue {arbv} -mode {args.mode}"
     print(command)
     subprocess.call(command.split(" "), shell=False)
