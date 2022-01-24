@@ -127,7 +127,3 @@ def train_cascade():
     command = f"{traincascade_path} -data {args.output} -vec {vec_file} -bg {neg_list} -numPos {args.numPos} -numNeg {args.numNeg} -numStages {args.stages} -w {args.width} -h {args.height} -precalcIdxBufSize {args.idxSize} -precalcValBufSize {args.valSize} -numThreads {args.numThreads} -acceptanceRatioBreakValue {arbv} -mode {args.mode}"
     print(command)
     subprocess.call(command.split(" "), shell=False)
-
-
-if __name__ == "__main__":
-    main()

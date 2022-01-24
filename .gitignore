@@ -1,5 +1,9 @@
 n/
 p/
+__pycache__/
+*.egg-info/
+dist/
+build/
 *.jpg
 *.png
 *.jpeg
