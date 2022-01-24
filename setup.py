@@ -1,5 +1,6 @@
 import json
 import urllib.request
+from xml.etree.ElementInclude import include
 from setuptools import setup, find_packages
 
 
@@ -29,8 +30,9 @@ setup(
     long_description_content_type="text/markdown",
     version="2022.1.24",
     license="AGPLv3",
-    download_url="https://github.com/egeakman/cascade-trainer/archive/2022.1.24.tar.gz",
+    download_url="https://github.com/egeakman/cascade-trainer/archive/2022.1.24v2.tar.gz",
     packages=find_packages(where=".", exclude=["tests"]),
+    include_package_data=True,
     zip_safe=False,
     python_requires=">=3.6",
     entry_points={

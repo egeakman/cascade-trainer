@@ -7,8 +7,8 @@ from argparse import ArgumentParser
 neg_list = "neg.lst"
 pos_list = "pos.lst"
 vec_file = "samples.vec"
-createsamples_path = "executables/opencv_createsamples.exe"
-traincascade_path = "executables/opencv_traincascade.exe"
+createsamples_path = "data/opencv_createsamples.exe"
+traincascade_path = "data/opencv_traincascade.exe"
 
 parser = ArgumentParser()
 parser.add_argument("-neg", "--negative", help="Negative folder", required=True)
