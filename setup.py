@@ -60,7 +60,7 @@ setup(
         "Topic :: Scientific/Engineering",
         "Topic :: Software Development",
         "Programming Language :: Python :: 3 :: Only",
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "Environment :: Console",
