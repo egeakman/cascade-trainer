@@ -1,6 +1,5 @@
 import json
 import urllib.request
-from xml.etree.ElementInclude import include
 from setuptools import setup, find_packages
 
 
@@ -28,9 +27,9 @@ setup(
     description="An OpenCV based cascade trainer",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="2022.1.25",
+    version="2022.2.8",
     license="AGPLv3",
-    download_url="https://github.com/egeakman/cascade-trainer/archive/2022.1.25.tar.gz",
+    download_url="https://github.com/egeakman/cascade-trainer/archive/2022.2.8.tar.gz",
     packages=find_packages(where=".", exclude=["tests"]),
     include_package_data=True,
     package_data={"data": ["data/*.*"]},
